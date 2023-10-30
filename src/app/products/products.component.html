@@ -1,83 +1,30 @@
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  th,
-  td {
-    border: 1px solid darkcyan;
-    padding: 8px;
-    text-align: center;
-  }
-
-  th {
-    background-color: darkcyan;
-    color: white;
-    font-size: 28px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  img {
-    max-width: 100px;
-    max-height: 100px;
-  }
-
-  div {
-    font-size: 48px;
-    color: darkcyan;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #333;
-  }
-  button {
-    border: 1px solid rgb(113, 150, 199);
-  }
-</style>
-
-<table class="table table-bordered border-primary">
-  <thead>
-    <th>id</th>
-    <th>name</th>
-    <th>price</th>
-    <th>img</th>
-    <th>Q.N</th>
-    <th>Need</th>
-    <th>Buy</th>
-  </thead>
-  <tr *ngFor="let i of product; let index = index">
-    <ng-container *ngIf="i.quantity > 0; else hideRow">
-      <td>{{ i.id }}</td>
-      <td>{{ i.name }}</td>
-      <td>{{ i.price }}</td>
-      <td><img [src]="i.imgurl" /></td>
-      <td>{{ i.quantity }}</td>
-      <td>
-        <input type="number" required min="0" #numberInput />
-      </td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-primary"
-          (click)="change(i.price, numberInput, i.quantity, index)"
-        >
-          Buy
-        </button>
-      </td>
-    </ng-container>
-
-    <ng-template #hideRow></ng-template>
-  </tr>
-</table>
-<div>
-  Total price :
-  {{ Total }}
+<form class="d-flex" role="search">
+  <input
+    class="form-control me-1"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+<div class="card-group">
+  <ng-container
+    class="row row-cols-1 row-cols-md-3 g-4"
+    *ngFor="let pro of allProduct; let i = index"
+  >
+    <div class="card">
+      <img [src]="pro.image" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ pro.title }}
+        </h5>
+        <p class="card-text">
+          {{ pro.description | slice : 0 : 100
+          }}{{ pro.description.length > 20 ? "..." : "" }}
+        </p>
+        <a href="#" class="btn btn-primary">Buy Now</a>
+      </div>
+    </div>
+    <div *ngIf="i % 3 == 2" class="w-100"></div>
+  </ng-container>
 </div>
