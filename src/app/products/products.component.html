@@ -1,12 +1,13 @@
-<form class="d-flex" role="search">
-  <input
-    class="form-control me-1"
-    type="search"
-    placeholder="Search"
-    aria-label="Search"
-  />
-  <button class="btn btn-outline-primary" type="submit">Search</button>
-</form>
+<select
+  class="form-select"
+  aria-label="Default select example"
+  (change)="filter($event)"
+>
+  <option selected>All Products</option>
+  <option [value]="categ" *ngFor="let categ of allCategorie">
+    {{ categ }}
+  </option>
+</select>
 <div class="card-group">
   <ng-container
     class="row row-cols-1 row-cols-md-3 g-4"
@@ -22,6 +23,9 @@
           {{ pro.description | slice : 0 : 100
           }}{{ pro.description.length > 20 ? "..." : "" }}
         </p>
+
+        <span> {{ pro.price | currency }} </span>
+        <br />
         <a href="#" class="btn btn-primary">Buy Now</a>
       </div>
     </div>

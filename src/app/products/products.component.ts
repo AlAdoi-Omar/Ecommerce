@@ -7,13 +7,35 @@ import { DataPrpductService } from '../service/data-prpduct.service';
 })
 export class ProductsComponent implements OnInit {
   allProduct: any = [];
+  allCategorie: any = [];
   constructor(private dataService: DataPrpductService) {}
   ngOnInit() {
     this.getProduct();
-    this.getProduct();
+    this.getCategorie();
   }
   getProduct() {
     this.dataService.getAllprodcucts().subscribe({
+      next: (res) => {
+        this.allProduct = res;
+      },
+      error: (err) => {
+        alert(err.message);
+      },
+    });
+  }
+  getCategorie() {
+    this.dataService.getAllcategories().subscribe({
+      next: (res) => {
+        this.allCategorie = res;
+      },
+      error: (err) => {
+        alert(err.message);
+      },
+    });
+  }
+  filter(event: any) {
+    let cat = event.target.value;
+    this.dataService.getAllProductbycategorie(cat).subscribe({
       next: (res) => {
         this.allProduct = res;
       },

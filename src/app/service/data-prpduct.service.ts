@@ -9,4 +9,11 @@ export class DataPrpductService {
   getAllprodcucts() {
     return this.http.get('https://fakestoreapi.com/products');
   }
+
+  getAllcategories() {
+    return this.http.get('https://fakestoreapi.com/products/categories');
+  }
+  getAllProductbycategorie(categ: string) {
+    return this.http.get(`https://fakestoreapi.com/products/category/${categ}`);
+  }
 }
