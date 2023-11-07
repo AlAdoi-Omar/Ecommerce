@@ -3,7 +3,7 @@
   aria-label="Default select example"
   (change)="filter($event)"
 >
-  <option selected>All Products</option>
+  <option value="All" selected>All Products</option>
   <option [value]="categ" *ngFor="let categ of allCategorie">
     {{ categ }}
   </option>
@@ -26,7 +26,7 @@
 
         <span> {{ pro.price | currency }} </span>
         <br />
-        <a href="#" class="btn btn-primary">Buy Now</a>
+        <a class="btn btn-primary">Buy </a>
       </div>
     </div>
     <div *ngIf="i % 3 == 2" class="w-100"></div>

@@ -8,6 +8,7 @@ import { DataPrpductService } from '../service/data-prpduct.service';
 export class ProductsComponent implements OnInit {
   allProduct: any = [];
   allCategorie: any = [];
+  selectedCategory!: string;
   constructor(private dataService: DataPrpductService) {}
   ngOnInit() {
     this.getProduct();
@@ -35,6 +36,9 @@ export class ProductsComponent implements OnInit {
   }
   filter(event: any) {
     let cat = event.target.value;
+    cat == 'All' ? this.getProduct() : this.getProductByCatego(cat);
+  }
+  getProductByCatego(cat: string) {
     this.dataService.getAllProductbycategorie(cat).subscribe({
       next: (res) => {
         this.allProduct = res;

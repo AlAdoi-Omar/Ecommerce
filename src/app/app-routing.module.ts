@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactusComponent } from './contactus/contactus.component';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
