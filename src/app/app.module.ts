@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     AboutusComponent,
     ProductsComponent,
     ContactusComponent,
+    SpinnerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

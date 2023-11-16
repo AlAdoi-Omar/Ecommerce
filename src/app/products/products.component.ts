@@ -8,16 +8,18 @@ import { DataPrpductService } from '../service/data-prpduct.service';
 export class ProductsComponent implements OnInit {
   allProduct: any = [];
   allCategorie: any = [];
-  selectedCategory!: string;
+  isloading: boolean = false;
   constructor(private dataService: DataPrpductService) {}
   ngOnInit() {
     this.getProduct();
     this.getCategorie();
   }
   getProduct() {
+    this.isloading = true;
     this.dataService.getAllprodcucts().subscribe({
       next: (res) => {
         this.allProduct = res;
+        this.isloading = false;
       },
       error: (err) => {
         alert(err.message);
@@ -25,9 +27,11 @@ export class ProductsComponent implements OnInit {
     });
   }
   getCategorie() {
+    this.isloading = true;
     this.dataService.getAllcategories().subscribe({
       next: (res) => {
         this.allCategorie = res;
+        this.isloading = false;
       },
       error: (err) => {
         alert(err.message);
@@ -36,12 +40,14 @@ export class ProductsComponent implements OnInit {
   }
   filter(event: any) {
     let cat = event.target.value;
-    cat == 'All' ? this.getProduct() : this.getProductByCatego(cat);
+    cat == 'All' ? this.getProduct() : this.getProductByCategorie(cat);
   }
-  getProductByCatego(cat: string) {
+  getProductByCategorie(cat: string) {
+    this.isloading = true;
     this.dataService.getAllProductbycategorie(cat).subscribe({
       next: (res) => {
         this.allProduct = res;
+        this.isloading = false;
       },
     });
   }

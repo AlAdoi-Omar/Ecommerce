@@ -3,11 +3,13 @@
   aria-label="Default select example"
   (change)="filter($event)"
 >
-  <option value="All" selected>All Products</option>
-  <option [value]="categ" *ngFor="let categ of allCategorie">
-    {{ categ }}
+  >
+  <option value="All">All Products</option>
+  <option [value]="cat" *ngFor="let cat of allCategorie">
+    {{ cat }}
   </option>
 </select>
+<app-spinner class="text-center" *ngIf="isloading"></app-spinner>
 <div class="card-group">
   <ng-container
     class="row row-cols-1 row-cols-md-3 g-4"
