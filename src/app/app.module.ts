@@ -11,6 +11,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { SelectComponent } from './select/select.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ProductsComponent,
     ContactusComponent,
     SpinnerComponent,
+    SelectComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

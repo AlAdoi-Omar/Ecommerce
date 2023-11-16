@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>{{ title }}</h2>
+  <select
+    class="form-select custom-select"
+    aria-label="Default select example"
+    (change)="filter($event)"
+  >
+    <option value="All" selected>All Products</option>
+    <option [value]="item" *ngFor="let item of data">
+      {{ item }}
+    </option>
+  </select>
+</div>

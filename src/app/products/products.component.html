@@ -1,14 +1,8 @@
-<select
-  class="form-select"
-  aria-label="Default select example"
-  (change)="filter($event)"
->
-  >
-  <option value="All">All Products</option>
-  <option [value]="cat" *ngFor="let cat of allCategorie">
-    {{ cat }}
-  </option>
-</select>
+<app-select
+  [title]="'Categorie'"
+  [data]="allCategorie"
+  (selectedValue)="filter($event)"
+></app-select>
 <app-spinner class="text-center" *ngIf="isloading"></app-spinner>
 <div class="card-group">
   <ng-container
